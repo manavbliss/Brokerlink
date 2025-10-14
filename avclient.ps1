@@ -1,7 +1,6 @@
-$avClient = 'Sophos Anti-Virus'
+$avClient = 'CrowdStrike Falcon Sensor'
 $avProduct = Get-CimInstance -Namespace 'root\SecurityCenter2' -Class AntiVirusProduct | Where-Object { $_.displayName -eq $avClient } | Select-Object -First 1
-#$avProduct = Get-WmiObject -Namespace 'root\SecurityCenter2' -Class AntiVirusProduct | Where-Object { $_.displayName -eq $avClient } | Select-Object -First 1
-$avSummary = New-Object -TypeName PSObject
+
 
 If ($avProduct) {
     $hexProductState = [Convert]::ToString($avProduct.productState, 16).PadLeft(6, '0')
